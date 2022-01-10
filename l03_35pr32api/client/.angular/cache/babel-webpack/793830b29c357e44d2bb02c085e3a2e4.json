@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class MaterialService {\n  static toast(message) {\n    M.toast({\n      html: message\n    });\n  }\n\n  static initializeFloatingButton(ref) {\n    M.FloatingActionButton.init(ref.nativeElement);\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

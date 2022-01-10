@@ -1,0 +1,132 @@
+<div class="page-title">
+    <h4>
+        <a routerLink="/phones"> Телефоны </a>
+        <i class="material-icons">keyboard_arrow_right</i>
+        {{isNew ? 'Добавить' : 'Редактировать'}} телефон
+    </h4>
+    <span>
+        <button class="btn btn-small red" (click)="deletePhone()">
+            <i class="material-icons">delete</i>
+        </button>
+    </span>
+</div>
+
+
+
+<div class="row">
+    <form class="col s12 l6" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="input-field">
+
+            <input [ngClass]="{'invalid': form.controls['typePhone'].invalid && form.controls['typePhone'].touched}"
+                formControlName="typePhone" id="typePhone" type="text" placeholder="Тип продукта...">
+            <div *ngIf="this.form.controls['vendor'].invalid && this.form.controls['vendor'].touched"
+                class="validation">
+                <small *ngIf="this.form.controls['typePhone'].errors?.['required']">Поле тип продукта не может быть
+                    пустым</small>
+                <small *ngIf="this.form.controls['typePhone'].errors?.['maxlength']">Длина поля не должна превышать 50
+                    символов</small>
+            </div>
+
+            <input [ngClass]="{'invalid': form.controls['vendor'].invalid && form.controls['vendor'].touched}"
+                formControlName="vendor" id="vendor" type="text" placeholder="Производитель...">
+
+
+            <div *ngIf="this.form.controls['vendor'].invalid && this.form.controls['vendor'].touched"
+                class="validation">
+                <small *ngIf="this.form.controls['vendor'].errors?.['required']">Поле производитель не может быть
+                    пустым</small>
+                <small *ngIf="this.form.controls['vendor'].errors?.['maxlength']">Длина поля не должна превышать 40
+                    символов</small>
+            </div>
+
+            <input [ngClass]="{'invalid': form.controls['model'].invalid && form.controls['model'].touched}"
+                formControlName="model" id="model" type="text" placeholder="Модель...">
+
+
+            <div *ngIf="this.form.controls['model'].invalid && this.form.controls['model'].touched" class="validation">
+                <small *ngIf="this.form.controls['model'].errors?.['required']">Поле модель не может быть
+                    пустым</small>
+            </div>
+
+
+            <input [ngClass]="{'invalid': form.controls['price'].invalid && form.controls['price'].touched}"
+                formControlName="price" id="price" type="number" placeholder="Цена...">
+
+
+            <div *ngIf="this.form.controls['price'].invalid && this.form.controls['price'].touched" class="validation"
+                appStyle>
+                <small *ngIf="this.form.controls['price'].errors?.['min']">Поле цена не может быть
+                    меньше 100</small>
+            </div>
+
+
+
+
+            <input [ngClass]="{'invalid': form.controls['img'].invalid && form.controls['img'].touched}"
+                formControlName="img" id="img" type="text" placeholder="Фото...">
+
+
+            <div *ngIf="this.form.controls['img'].invalid && this.form.controls['img'].touched" class="validation"
+                appStyle>
+                <small *ngIf="this.form.controls['img'].errors?.['maxlength']">Длина поля не должна превышать 255
+                    символов</small>
+            </div>
+
+
+
+
+
+            <!--  <span class="helper-text red-text" *ngIf="form.controls['img'].invalid && form.controls['img'].touched">
+                <span *ngIf="form.controls['img'].errors?.['maxlength']">
+                    Длина поля не должна превышать 255 символов
+                </span>
+            </span>-->
+
+
+
+
+            <input [ngClass]="{'invalid': form.controls['count'].invalid && form.controls['count'].touched}"
+                formControlName="count" id="count" type="number" placeholder="Количество...">
+
+
+            <div *ngIf="this.form.controls['count'].invalid && this.form.controls['count'].touched" class="validation">
+                <small *ngIf="this.form.controls['count'].errors?.['min']">Поле количество не может быть
+                    меньше нуля </small>
+            </div>
+
+
+            <input [ngClass]="{'invalid': form.controls['vendorEmail'].invalid && form.controls['vendorEmail'].touched}"
+                formControlName="vendorEmail" id="vendorEmail" type="text" placeholder="Почта производителя...">
+
+
+            <div *ngIf="this.form.controls['vendorEmail'].invalid && this.form.controls['vendorEmail'].touched"
+                class="validation">
+                <small *ngIf="this.form.controls['vendorEmail'].errors?.['required']">Поле Email производителя не может
+                    быть пустым</small>
+                <small *ngIf="this.form.controls['vendorEmail'].errors?.['email']">Введите Email корректно</small>
+                <small *ngIf="this.form.controls['vendorEmail'].errors?.['maxlength']">Длина поля не должна превышать
+                    100 символов</small>
+            </div>
+
+
+            <textarea style="height: 100px;"
+                [ngClass]="{'invalid': form.controls['description'].invalid && form.controls['description'].touched}"
+                formControlName="description" id="description" type="text"
+                placeholder="Описание телефона..."></textarea>
+
+
+
+            <div *ngIf="this.form.controls['description'].invalid && this.form.controls['description'].touched"
+                class="validation">
+                <small *ngIf="this.form.controls['description'].errors?.['maxlength']">Длина поля не должна превышать
+                    255 символов</small>
+                <small *ngIf="this.form.controls['description'].errors?.['required']">Поле описание не может быть
+                    пустым</small>
+            </div>
+        </div>
+
+        <div>
+            <button [disabled]="form.invalid" class="waves-effect waves-light btn" type="submit">Сохранить</button>
+        </div>
+    </form>
+</div>

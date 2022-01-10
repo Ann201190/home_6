@@ -1,0 +1,54 @@
+<div style="margin: 20px;">
+
+    <table class="table table-striped">
+        <thead>
+            <tr style="text-align: center;">
+                <th scope="col">Тип товара</th>
+                <th scope="col">Производитель</th>
+                <th scope="col">Цена, шт/грн</th>
+                <th scope="col">Фото</th>
+                <th scope="col">Количество</th>
+                <th scope="col">Характеристик</th>
+                <th scope="col">Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>{{phone?.typePhone}}</td>
+                <td>
+                    <div (mouseenter)="mouseEnterEmail() " (mouseleave)="mouseLeaveEmail()">
+                        {{phone?.vendor}}
+                        <div [hidden]="!emailVendorVisible">{{phone?.vendorEmail}}</div>
+                    </div>
+                </td>
+                <td>{{phone?.price}}</td>
+
+                <td style="text-align: center;">
+                    <button class="waves-effect waves-light btn grey darken-1"
+                        (click)="photoVisible=!photoVisible">Детальнее</button>
+                    <img *ngIf="photoVisible" style="height: 300px;" src="{{phone?.img}}" alt="">
+                    <ng-template [appphotoVisible2]="photoVisible">
+                        <p></p>
+                    </ng-template>
+                </td>
+                <td style="text-align: center;">{{phone?.count}}</td>
+
+
+
+
+                <td style="text-align: center;">
+                    <div (mouseenter)="mouseEnterDescription() " (mouseleave)="mouseLeaveDescription()">
+                        <a href="javascript: void(0);">Детальнее</a>
+                        <div [hidden]="!descriptionVendorVisible"> {{phone?.description}}</div>
+                    </div>
+                </td>
+
+                <td>
+                    <button class="btn btn-primary" (click)="goAllProduct()"> Назад</button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
